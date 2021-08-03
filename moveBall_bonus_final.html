@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Simulating a ball movement</h1>
+    <p>Every time the ball hits the edge of the box:
+        <ul>
+            <li>Its velocity in both the X and Y direction is randomly generated (varies from 3 to 10)</li>
+            <li>Its size is randomly generated (varies from 25 to 75 px)</li>
+        </ul>
+    </p>
+    <div class="container" style="
+            position:relative;
+            width:500px;
+            height:700px;
+            border: 8px solid black;
+            box-shadow: 10px 5px 5px rgb(71, 69, 69)">
+        <div id="ball" style="
+            z-index:5;
+            position:relative;
+            left:0px;
+            top:0px;
+            width:50px;
+            height:50px;
+            border-radius:50%;
+            background:green">
+    </div>
+    </div>
+</body>
+<a href=""></a>
+</html>
+
+<script>
+
+var velocityX = 5;
+var velocityY = 3;
+var positionX = 0;
+var positionY = 0;
+var ball = document.getElementById('ball');
+var ballWidth=50;
+var edgeLimitX=500-ballWidth;
+var edgeLimitY=700-ballWidth;
+
+// YOUR CODE 
+function ballMovement(){
+  if ((positionX>=edgeLimitX && velocityX >0) || (positionX<=0 && velocityX <0)){
+    velocityX = (-1) * Math.abs(velocityX)/velocityX *Math.random()*7+3;
+    ballWidth = Math.random()*50+25;
+  } else{
+    
+  }
+  positionX += velocityX;
+  ball.style.left=positionX+"px";
+
+  if ((positionY>=edgeLimitY && velocityY >0) || (positionY<=0 && velocityY <0)){
+    velocityY = (-1) * Math.abs(velocityY)/velocityY *Math.random()*7+3;
+    console.log ([velocityX,velocityY])
+    ballWidth = Math.random()*50+25;
+  } else{
+    
+  }
+  positionY += velocityY;
+  ball.style.top=positionY+"px";
+
+  ball.style.width=ballWidth+"px";
+  ball.style.height=ballWidth+"px";
+}
+
+setInterval(ballMovement, 10);
+
+// YOUR CODE 
+// ----------------
+</script>
